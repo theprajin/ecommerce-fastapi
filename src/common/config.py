@@ -8,9 +8,8 @@ class Settings(BaseSettings):
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
 
     # Database configuration
-    DATABASE_URL: str = os.getenv(
-        "DATABASE_URL", "postgresql://postgres:root@localhost/ecommerce_db"
-    )
+    DATABASE_URL: str = os.getenv("DATABASE_URL")
+    DATABASE_URL_ONLINE: str = os.getenv("DATABASE_URL_ONLINE")
 
     # JWT configuration
     JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "supersecretkey")

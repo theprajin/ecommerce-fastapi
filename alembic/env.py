@@ -7,6 +7,9 @@ from sqlalchemy import pool
 
 from alembic import context
 
+# Import your models' Base where it is defined
+from src.common.database import Base  # Adjust this path to where your Base is
+
 # Load the .env file
 load_dotenv()
 
@@ -57,7 +60,7 @@ def run_migrations_offline() -> None:
 
 
 # Access the DATABASE_URL from the environment (loaded from .env)
-db_url = os.getenv("DATABASE_URL")
+db_url = os.getenv("DATABASE_URL_ONLINE")
 
 if not db_url:
     raise ValueError("DATABASE_URL environment variable is not set.")
