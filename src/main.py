@@ -33,7 +33,12 @@ app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
 # Root path for health check or basic info
 @app.get("/")
 def root():
-    return {"message": "Welcome to the Full-Scale E-commerce Platform API"}
+    return {
+        "message": "Welcome to the Full-Scale E-commerce Platform API",
+        "version": "1.0.0",
+        "documentation": "https://ecommerce-fastapi-i6u5.onrender.com/docs",
+        "documentation2": "https://ecommerce-fastapi-i6u5.onrender.com/redoc",  # Replace with your actual documentation URL
+    }
 
 
 # Optional: you can add more global routes or configurations here
