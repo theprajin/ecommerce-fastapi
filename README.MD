@@ -1,4 +1,4 @@
-# Forum App in Flask Smorest
+# Ecommerce App in FastAPI
 
 ## Setup the project
 
