@@ -33,3 +33,7 @@ class AuthService:
         if not user or not verify_password(user_data.password, user.hashed_password):
             raise InvalidCredentialsException()
         return create_jwt_token(user_data=user)
+
+    @staticmethod
+    async def get_user_by_id(db: Session, user_id: int):
+        return db.query(User).filter(User.id == user_id).first()

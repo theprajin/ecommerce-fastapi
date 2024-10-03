@@ -1,7 +1,7 @@
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 import jwt
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from src.auth.config import JWT_SECRET_KEY, ACCESS_TOKEN_EXPIRE_MINUTES
 from src.auth.exceptions import TokenExpiredException
 
@@ -25,7 +25,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def create_jwt_token(user_data):
-    expire = datetime.utcnow() + timedelta(minutes=30)
+    expire = datetime.now(timezone.utc) + timedelta(minutes=30)
     to_encode = {
         "exp": expire,
         "email": user_data.email,
