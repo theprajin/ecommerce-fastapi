@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from src.auth.router import router as auth_router
 from src.common.exceptions import http_exception_handler
-from fastapi.staticfiles import StaticFiles
 from src.common.config import settings
 from src.common.database import create_tables
 
@@ -37,8 +37,34 @@ def root():
         "message": "Welcome to the Full-Scale E-commerce Platform API",
         "version": "1.0.0",
         "documentation": "https://ecommerce-fastapi-i6u5.onrender.com/docs",
-        "documentation2": "https://ecommerce-fastapi-i6u5.onrender.com/redoc",  # Replace with your actual documentation URL
+        "documentation2": "https://ecommerce-fastapi-i6u5.onrender.com/redoc",
+        "documentation2": "https://ecommerce-fastapi-i6u5.onrender.com/rapidoc",
     }
+
+
+@app.get("/rapidoc", include_in_schema=False)
+async def custom_docs():
+    html_content = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>RapiDoc</title>
+        <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+    </head>
+    <body>
+        <rapi-doc 
+            spec-url="/openapi.json" 
+            render-style="read" 
+            theme="light"
+            show-header="true"
+            allow-spec-url-load="false"
+            allow-search="true"
+            show-method-in-nav-bar="true"
+        ></rapi-doc>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content)
 
 
 # Optional: you can add more global routes or configurations here

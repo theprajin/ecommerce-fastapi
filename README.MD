@@ -25,8 +25,10 @@
 
 - http://localhost:5000/api/v1/docs
 - http://localhost:5000/api/v1/redoc
+- http://localhost:5000/api/v1/rapidoc
 
 ## If you want to test API through deployed link click below:
 
 - https://ecommerce-fastapi-i6u5.onrender.com/docs
 - https://ecommerce-fastapi-i6u5.onrender.com/redoc
+- https://ecommerce-fastapi-i6u5.onrender.com/rapidoc
